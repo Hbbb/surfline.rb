@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Hbbb"]
   spec.email         = ["h.borges10592@gmail.com"]
 
-  spec.summary       = %q{A simple wrapper for Surfline's private API}
+  spec.summary       = %q{A simple wrapper for Surfline's API}
   spec.homepage      = ""
   spec.license       = "MIT"
 
