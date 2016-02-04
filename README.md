@@ -1,8 +1,5 @@
 # Surfline
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/surfline`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Surfline is a ruby gem for easily consuming and parsing Surfline.com's API.
 
 ## Installation
 
@@ -21,8 +18,13 @@ Or install it yourself as:
     $ gem install surfline
 
 ## Usage
+surfline wraps each report resource in a model. The models each expose a simple interface that makes accessing the relevant information of a report trivial.
 
-TODO: Write usage instructions here
+There are four model types:
+
+### Analysis
+This wraps the analysis report. It exposes the following methods
+``
 
 ## Development
 
@@ -32,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/surfline.
+Bug reports and pull requests are welcome on GitHub at https://github.com/hbbb/surfline.
 
 
 ## License
