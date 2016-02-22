@@ -7,22 +7,34 @@ module Surfline
     BASE_URI = 'http://api.surfline.com/v1/forecasts'
 
     def self.surf(spot)
-      fetch(Surfline::SPOT_MAP[spot.to_sym], 'surf')
+      spot = lookup(spot)
+      fetch(spot, 'surf')
     end
 
     def self.tide(spot)
-      fetch(Surfline::SPOT_MAP[spot.to_sym], 'tide')
+      spot = lookup(spot)
+      fetch(spot, 'tide')
     end
 
     def self.wind(spot)
-      fetch(Surfline::SPOT_MAP[spot.to_sym], 'wind')
+      spot = lookup(spot)
+      fetch(spot, 'wind')
     end
 
     def self.analysis(spot)
-      fetch(Surfline::SPOT_MAP[spot.to_sym], 'analysis')
+      spot = lookup(spot)
+      fetch(spot, 'analysis')
     end
 
     private
+
+    def self.lookup(spot)
+      spot = if spot.is_a? Numeric
+               spot
+             else
+               Surfline::SPOT_MAP[spot.to_sym]
+             end
+    end
 
     def self.fetch(spot_id, resource)
       RestClient.get("#{BASE_URI}/#{spot_id}?resources=#{resource}&days=1")
