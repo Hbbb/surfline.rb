@@ -30,4 +30,16 @@ describe Surfline::Models::Tide do
       expect(@model.tide_at(t)).to eq(data['Tide']['dataPoints'][23])
     end
   end
+
+  describe '#full_report' do
+    it 'returns an array of tide data points for the day' do
+      report_date = DateTime.parse(data['_metadata']['dateCreated'])
+
+      expected = data['Tide']['dataPoints'].select do |data|
+        DateTime.parse(data['Localtime']).day == report_date.day
+      end
+
+      expect(@model.full_report).to eq(expected)
+    end
+  end
 end

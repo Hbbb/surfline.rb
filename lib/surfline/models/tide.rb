@@ -4,10 +4,12 @@ module Surfline
   module Models
     class Tide < Base
       def initialize(data)
-        @data = data['Tide']['dataPoints'] if data['Tide']
+        super
 
-        if @data == nil
-          raise 'Invalid Surfline Tide data'
+        begin
+          @data = data['Tide']['dataPoints']
+        rescue NoMethodError
+          raise 'Invalid Surfline tide report \n Ensure the API has not changed'
         end
       end
 
@@ -29,6 +31,14 @@ module Surfline
       def tide_direction(time)
         time = time.class == Time ? time : Time.new(time)
         closest_tide(time + 1.hour)['height'] > closest_tide(time)['height'] ? 'rising' : 'falling'
+      end
+
+      def full_report
+        report_date = DateTime.parse(@raw['_metadata']['dateCreated'])
+
+        @data.select do |datum|
+          DateTime.parse(datum['Localtime']).day == report_date.day
+        end
       end
 
       private

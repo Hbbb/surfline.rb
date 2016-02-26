@@ -37,9 +37,23 @@ describe Surfline::Models::Analysis do
     end
   end
 
-  describe '#report_time' do
-    it 'returns correct report time of the analysis' do
-      expect(@model.report_time).to eq(data['Analysis']['report_time'])
+  describe '#full_report' do
+    it 'returns a full analysis report' do
+      expected = {
+        report_text: data['Analysis']['surfRange'][0], # 4-6 ft. - shoulder high to 1 ft. overhead
+        surf_max: data['Analysis']['surfMax'][0],
+        surf_min: data['Analysis']['surfMin'][0],
+        surf_peak: data['Analysis']['surfPeak'][0],
+        short_term_forecast: data['Analysis']['short_term_forecast'],
+        condition: data['Analysis']['generalCondition'][0],
+        standout: data['Analysis']['occasional'],
+        datestamp: data['Analysis']['reportdate'],
+        latitude: data['lat'],
+        longitude: data['lon'],
+        id: data['id']
+      }
+
+      expect(@model.full_report).to eq(expected)
     end
   end
 end
