@@ -1,54 +1,30 @@
 module Surfline
   module Models
     class Wind < Base
+      attr_reader :full_report
+
       def initialize(data)
-        @data = data['Wind'] if data['Wind']
+        super
 
-        if @data == nil
-          raise 'Invalid Surfline Wind data'
+        begin
+          @data = data['Wind']
+        rescue NoMethodError
+          raise 'Invalid Surfline wind report \n Ensure the API hasnt changed'
         end
-      end
 
-      def report(time)
-        {
-          direction: direction(time),
-          speed: speed(time)
-        }
-      end
+        @full_report = []
+        @data['dateStamp'].flatten.each_with_index do |stamp, i|
+          segment = {}
+          segment[:direction] = @data['wind_direction'].flatten[i]
+          segment[:speed] = @data['wind_speed'].flatten[i]
+          segment[:datestamp] = stamp
+          segment.merge!(spot_meta)
 
-      def direction(time)
-        attr('wind_direction')[time_group(time)]
-      end
-
-      def speed(time)
-        attr('wind_speed')[time_group(time)]
-      end
-
-      private
-
-      def time_group(time)
-        # FIXME: This may be a bad assumption
-        report_hour = time.class == Time ? time.hour : Time.new(time).hour
-        segment = nil
-
-        if (2..4).include?(report_hour)
-          segment = 0
-        elsif (5..7).include?(report_hour)
-          segment = 1
-        elsif (8..10).include?(report_hour)
-          segment = 2
-        elsif (11..13).include?(report_hour)
-          segment = 3
-        elsif (14..16).include?(report_hour)
-          segment = 4
-        elsif (17..19).include?(report_hour)
-          segment = 5
-        elsif (20..22).include?(report_hour)
-          segment = 6
-        else
-          segment = 7
+          @full_report.push(segment)
         end
+
       end
+
     end
   end
 end

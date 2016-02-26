@@ -1,11 +1,18 @@
 module Surfline
   module Models
     class Base
+      def initialize(data)
+        @raw = data
+      end
+
       private
-      # Surfline's API divides all swell resources into four groups
-      # The groups represent four sections of the day (5am, 11am, 5pm, 11pm)
-      # Given a time, return which group it falls within
-      def segment_time(time)
+
+      def spot_meta
+        {
+          latitude: @raw['lat'],
+          longitude: @raw['lon'],
+          id: @raw['id']
+        }
       end
 
       def attr(key)
@@ -17,6 +24,7 @@ module Surfline
           nil
         end
       end
+
     end
   end
 end
