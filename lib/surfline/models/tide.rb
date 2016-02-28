@@ -38,7 +38,8 @@ module Surfline
 
         @data.select do |datum|
           DateTime.parse(datum['Localtime']).day == report_date.day
-        end
+        end.map! {|d| d.merge!(spot_meta) }
+
       end
 
       private
