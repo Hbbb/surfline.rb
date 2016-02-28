@@ -27,7 +27,7 @@ describe Surfline::Models::Surf do
             surf_min: data['Surf']['surf_min'].flatten[0],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             height_1: data['Surf']['swell_height1'].flatten[1],
@@ -44,7 +44,7 @@ describe Surfline::Models::Surf do
             surf_min: data['Surf']['surf_min'].flatten[1],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             height_1: data['Surf']['swell_height1'].flatten[2],
@@ -61,7 +61,7 @@ describe Surfline::Models::Surf do
             surf_min: data['Surf']['surf_min'].flatten[2],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             height_1: data['Surf']['swell_height1'].flatten[3],
@@ -78,7 +78,7 @@ describe Surfline::Models::Surf do
             surf_min: data['Surf']['surf_min'].flatten[3],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           }
         ]
 

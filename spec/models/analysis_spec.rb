@@ -52,7 +52,7 @@ describe Surfline::Models::Analysis do
           datestamp: data['Analysis']['reportdate'],
           latitude: data['lat'],
           longitude: data['lon'],
-          id: data['id']
+          surfline_id: data['id']
         }
 
         expect(@model.full_report).to eq(expected)

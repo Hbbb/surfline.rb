@@ -18,7 +18,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[0],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[1],
@@ -26,7 +26,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[1],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[2],
@@ -34,7 +34,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[2],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[3],
@@ -42,7 +42,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[3],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[4],
@@ -50,7 +50,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[4],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[5],
@@ -58,7 +58,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[5],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[6],
@@ -66,7 +66,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[6],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           },
           {
             direction: data['Wind']['wind_direction'].flatten[7],
@@ -74,7 +74,7 @@ describe Surfline::Models::Wind do
             datestamp: data['Wind']['dateStamp'].flatten[7],
             latitude: data['lat'],
             longitude: data['lon'],
-            id: data['id']
+            surfline_id: data['id']
           }
         ]
 
