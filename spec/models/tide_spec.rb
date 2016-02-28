@@ -39,7 +39,7 @@ describe Surfline::Models::Tide do
 
         expected = data['Tide']['dataPoints'].select do |datum|
           DateTime.parse(datum['Localtime']).day == report_date.day
-        end
+        end.map! {|d| d.merge!(@model.send(:spot_meta)) }
 
         expect(@model.full_report).to eq(expected)
       end

@@ -11,7 +11,7 @@ module Surfline
         {
           latitude: @raw['lat'],
           longitude: @raw['lon'],
-          id: @raw['id']
+          surfline_id: @raw['id']
         }
       end
 
