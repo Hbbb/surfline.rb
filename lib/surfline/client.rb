@@ -28,6 +28,8 @@ module Surfline
 
     private
 
+    # FIXME: If you pass in a number there is no validation.
+    # It allows you to pass in a bad ID
     def self.lookup(spot)
       spot = if spot.is_a? Numeric
                spot
@@ -37,7 +39,7 @@ module Surfline
     end
 
     def self.fetch(spot_id, resource)
-      RestClient.get("#{BASE_URI}/#{spot_id}?resources=#{resource}&days=1")
+      RestClient.get("#{BASE_URI}/#{spot_id}?resources=#{resource}&days=1&usenearshore=true&getAllSpots=false")
     end
   end
 end
