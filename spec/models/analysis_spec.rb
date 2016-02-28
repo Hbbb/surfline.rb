@@ -33,12 +33,6 @@ describe Surfline::Models::Analysis do
       end
     end
 
-    describe '#report_date' do
-      it 'returns correct report date of the analysis' do
-        expect(@model.report_date).to eq(data['Analysis']['reportdate'])
-      end
-    end
-
     describe '#full_report' do
       it 'returns a full analysis report' do
         expected = {
@@ -48,8 +42,7 @@ describe Surfline::Models::Analysis do
           surf_peak: data['Analysis']['surfPeak'][0],
           short_term_forecast: data['Analysis']['short_term_forecast'],
           condition: data['Analysis']['generalCondition'][0],
-          standout: data['Analysis']['occasional'],
-          datestamp: data['Analysis']['reportdate'],
+          datestamp: data['_metadata']['dateCreated'],
           latitude: data['lat'],
           longitude: data['lon'],
           surfline_id: data['id']

@@ -35,14 +35,6 @@ module Surfline
         attr 'generalCondition'
       end
 
-      def standout
-        attr 'occasional'
-      end
-
-      def report_date
-        attr 'reportdate'
-      end
-
       def full_report
         {
           report_text: report_text,
@@ -51,8 +43,7 @@ module Surfline
           surf_peak: surf_peak,
           short_term_forecast: short_term_forecast,
           condition: condition,
-          standout: standout,
-          datestamp: report_date,
+          datestamp: @raw['_metadata']['dateCreated']
         }.merge!(spot_meta)
       end
 
