@@ -37,7 +37,7 @@ module Surfline
         report_date = DateTime.parse(@raw['_metadata']['dateCreated'])
 
         @data.select do |datum|
-          DateTime.parse(datum['Localtime']).day == report_date.day
+          DateTime.parse(datum['utctime']).day == report_date.day
         end.map! {|d| d.merge!(spot_meta) }
 
       end
